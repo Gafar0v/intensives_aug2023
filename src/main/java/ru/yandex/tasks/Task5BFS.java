@@ -2,13 +2,14 @@
 
 package ru.yandex.tasks;
 
-import java.util.Arrays;
+import java.util.*;
 
 public class Task5BFS {
     public static void runSearch() {
         /*
          * Реализация bfs
          */
+
         // (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ WRITE CODE HERE (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧
     }
 
@@ -20,7 +21,20 @@ public class Task5BFS {
          * root - корень, откуда нужно начинать обход
          */
         // (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ WRITE CODE HERE (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧
-        return null;
+        Queue<Integer> queue = new ArrayDeque<>();
+        queue.add(root);
+        List<Integer> order = new ArrayList<>();
+        while (!queue.isEmpty()){
+            int node = queue.poll();
+            order.add(node);
+            if(tree[node][0]!=-1) queue.add(tree[node][0]);
+            if(tree[node][1]!=-1) queue.add(tree[node][1]);
+        }
+        int[] bfsOrder = new int[order.size()];
+        for (int i = 0; i < order.size(); i++) {
+            bfsOrder[i] = order.get(i);
+        }
+        return bfsOrder;
     }
 
     public static void selfCheck() {

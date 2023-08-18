@@ -2,26 +2,30 @@
 
 package ru.yandex.tasks;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Task4DFS {
-    public static void runSearch() {
+    public static void runSearch(int[][] tree, int node, List<Integer> order) {
         /*
          * Реализация dfs
          */
         // (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ WRITE CODE HERE (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧
+        if (tree[node][0] != -1) runSearch(tree, tree[node][0], order);
+        if (tree[node][1] != -1) runSearch(tree, tree[node][1], order);
+        order.add(node);
+
     }
 
     public static int[] getDFSOrder(int[][] tree, int root) {
-        /*
-         * Функция возвращает массив с порядковыми номерами вершин в обходе
-         * Сначала левое поддерево, затем правое, затем корень.
-         * Дано дерево из n (<= 10^5) вершин (пронумерованных от 0 до n-1)
-         * tree - двумерный массив, tree[i][0] - номер левого сына, tree[i][1] - номер правого сына (если нет левого / правого сына, соотв. элемент -1)
-         * root - корень, откуда нужно начинать обход
-         */
-        // (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ WRITE CODE HERE (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧
-        return null;
+        List<Integer> order = new ArrayList<>();
+        runSearch(tree, root, order);
+        int[] dfsOrder = new int[order.size()];
+        for (int i = 0; i < order.size(); i++) {
+            dfsOrder[i] = order.get(i);
+        }
+        return dfsOrder;
     }
 
     public static void selfCheck() {
