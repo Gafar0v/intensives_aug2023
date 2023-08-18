@@ -12,7 +12,23 @@ public class Task3InsertionSort {
          * Выход: отсортированный (сортировкой вставками!) numbers
          */
         // (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ WRITE CODE HERE (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧
-        return null;
+        ArrayList<Integer> sortedList = new ArrayList<>();
+        if (numbers.size() == 0) return numbers;
+        sortedList.add(numbers.get(0));
+        for (int i = 1; i < numbers.size(); i++) {
+            int addingNumber = numbers.get(i);
+            int beforeSize = sortedList.size();
+            for (int j = 0; j < sortedList.size(); j++) {
+                if (addingNumber < sortedList.get(j)) {
+                    sortedList.add(j, addingNumber);
+                    break;
+                }
+            }
+            if(sortedList.size() ==beforeSize){
+                sortedList.add(addingNumber);
+            }
+        }
+        return sortedList;
     }
 
     public static void selfCheck() {
