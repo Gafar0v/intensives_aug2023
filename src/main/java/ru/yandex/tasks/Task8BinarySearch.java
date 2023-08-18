@@ -11,6 +11,16 @@ public class Task8BinarySearch {
          * Если таких i несколько, вывести наибольший
          */
         // (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ WRITE CODE HERE (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧
+        int lIndx = -1;
+        int rIndx = sortedList.length;
+        while (lIndx<(rIndx-1)){
+            int mIndx = (lIndx+rIndx)/2;
+            if(sortedList[mIndx]>number) rIndx = mIndx;
+            else lIndx = mIndx;
+        }
+        if (sortedList[lIndx] == number) {
+            return lIndx;
+        }
         return -1;
     }
 
